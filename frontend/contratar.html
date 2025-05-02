@@ -3,14 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Finalizar Contratação</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h2>Finalize a contratação</h2>
-  <form id="form-contratar">
-    <input type="text" id="dadosBancarios" placeholder="Dados bancários" required><br>
-    <input type="file" id="documento" required><br>
-    <button type="submit">Concluir</button>
-  </form>
+<body class="bg-gradient-to-br from-red-100 via-red-300 to-red-500 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg">
+    <h2 class="text-2xl font-bold mb-6 text-center text-red-700">Finalize a contratação</h2>
+    <form id="form-contratar" class="flex flex-col gap-4">
+      <input type="text" id="dadosBancarios" placeholder="Conta" required
+        class="p-3 border border-red-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500">
+
+      <input type="text" id="dadosBancarios" placeholder="Agência" required
+        class="p-3 border border-red-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500">
+      
+      <label class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-center cursor-pointer w-full shadow">
+        <span>Selecionar documento</span>
+        <input type="file" id="documento" required class="hidden">
+      </label>
+      
+      <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl shadow">
+        Concluir
+      </button>
+    </form>
+  </div>
 
   <script src="script.js"></script>
 </body>

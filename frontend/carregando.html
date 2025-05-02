@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Analisando...</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h2>Sua solicitação está em análise...</h2>
-  <p>Por favor, aguarde alguns instantes.</p>
+<body class="min-h-screen bg-gradient-to-br from-red-100 via-red-300 to-red-500 flex flex-col items-center justify-center text-red-900">
+  <h2 class="text-2xl font-bold mb-4">Sua solicitação está em análise...</h2>
+  <p class="text-lg">Por favor, aguarde alguns instantes.</p>
 
   <script>
     setTimeout(() => {
       window.location.href = "ofertas.html";
-    }, 3000); // Simula tempo de análise (3s)
+    }, 3000);
   </script>
 </body>
 </html>

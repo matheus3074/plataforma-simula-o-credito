@@ -47,16 +47,18 @@ if (document.getElementById('ofertas-container')) {
       const container = document.getElementById('ofertas-container');
       ofertas.forEach((oferta, index) => {
         const div = document.createElement('div');
+        div.className = "border border-red-300 rounded-xl p-4 shadow-sm";
         div.innerHTML = `
-          <strong>${oferta.banco}</strong><br>
+          <strong class="text-red-700 text-lg">${oferta.banco}</strong><br>
           Valor: R$ ${oferta.valor} <br>
           Parcelas: ${oferta.parcelas} <br>
           Juros: ${oferta.jurosMensal}% ao mês<br>
-          <button onclick="selecionarOferta(${index})">Selecionar</button>
-          <hr>
+          <button onclick="selecionarOferta(${index})" class="mt-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow">
+            Selecionar
+          </button>
         `;
         container.appendChild(div);
-      });
+      });      
       localStorage.setItem('etapa', 'ofertas');
       localStorage.setItem('ofertas', JSON.stringify(ofertas));
     });
@@ -83,6 +85,12 @@ if (document.getElementById('form-contratar')) {
       const oferta = JSON.parse(localStorage.getItem('ofertaSelecionada'));
       const cpf = localStorage.getItem('cpf');
 
+      if (!oferta) {
+        alert("Erro: Nenhuma oferta foi selecionada.");
+        return;
+      }
+
+
       const response = await fetch(`${BASE_URL}/contratar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -98,9 +106,8 @@ if (document.getElementById('form-contratar')) {
 
       const result = await response.text();
       if (result === "CONTRATO_REALIZADO") {
-        alert("Contrato realizado com sucesso!");
-        window.location.href = "index.html";
         localStorage.clear();
+        window.location.href = "finalizacao.html";
       }
     };
 
